@@ -81,6 +81,7 @@ img{
 .cartIcon{
     width: 3vh;
     height: auto;
+    color: black;
 }
 
 .price{

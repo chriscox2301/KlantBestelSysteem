@@ -3,26 +3,27 @@
 @{
 	ViewData["Title"] = "ProductDetails";
 }
-<link rel='stylesheet' type='text/css' media='screen' href='~/css/product.css' asp-append-version="true">
 
-<div class="container2">
-	<div class="imgContainer">
-		<img src="@Model.product.ImageUrl" />
+<div class="row bg-light shadow-sm rounded-3 overflow-hidden">
+	<div class="col-md-6 d-flex p-2">
+		<img src="@Model.product.ImageUrl" class="productD-img" />
 	</div>
-	<div class="productContainer">
-		<div class="infoContainer">
-			<h1>@Model.product.Name</h1>
-			<p>@Model.product.Description</p>
-		</div>
-		<div class="acties">
-			<form method ="post" asp-page-handler="AddToCart">
+	<div class="col-md-6 p-4 d-flex flex-column">
+		<h2>@Model.product.Name</h2>
+		<small class="text-muted">Productnummer: @Model.product.Id</small>
+		<p class="text-secondary">@Model.product.Description</p>
+
+		<div class="mt-auto d-flex justify-content-between align-items-center">
+			<div class="fs-1 fw-bold text-success">
+				€@Model.product.Price.ToString()
+			</div>
+			<form method="post" asp-page-handler="AddToCart" class="d-flex align-items-center gap-2">
 				<input type="hidden" name="id" value="@Model.product.Id" />
-				<input type="number" placeholder="1" name="quantity" class="Input2" min="1" max="50"/>
-				<div class="orderContainer">
-					<button class="addToCart2">Voeg toe aan winkelwagen <img class="cartIcon" src="~/img/Icons/CartIcon.png" /></button>
-				</div>
+				<input type="number" name="quantity" value="1" min="1" max="50" class="form-control" style="width: 70px;" />
+				<button type="submit" class="btn btn-success">
+					Voeg toe aan winkelwagen
+				</button>
 			</form>
-			<p class="price">€@Model.product.Price per stuk</p>
 		</div>
 	</div>
 </div>
