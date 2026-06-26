@@ -6,7 +6,7 @@
 
 <div class="row bg-light shadow-sm rounded-3 overflow-hidden">
 	<div class="col-md-6 d-flex p-2">
-		<img src="@Model.product.ImageUrl" class="productD-img" />
+		<img src="@Model.product.ImageUrl" class="img-fluid" />
 	</div>
 	<div class="col-md-6 p-4 d-flex flex-column">
 		<h2>@Model.product.Name</h2>
@@ -14,8 +14,8 @@
 		<p class="text-secondary">@Model.product.Description</p>
 
 		<div class="mt-auto d-flex justify-content-between align-items-center">
-			<div class="fs-1 fw-bold text-success">
-				€@Model.product.Price.ToString()
+			<div class="fs-2 fw-bold text-black">
+				€@Model.product.Price.ToString("F2")
 			</div>
 			<form method="post" asp-page-handler="AddToCart" class="d-flex align-items-center gap-2">
 				<input type="hidden" name="id" value="@Model.product.Id" />

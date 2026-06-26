@@ -3,59 +3,94 @@
 @{
 	ViewData["Title"] = "Winkelwagen";
 }
-<link rel='stylesheet' type='text/css' media='screen' href='~/css/cart.css'>
-<div class="cartContainer">
-	<div class="accountCart">
-		@if(Model.CurrentCustomer == null)
-		{
-			<div class="cartLogIn">
-				<p class="notLoggedIn">Om een order te plaatsen, log eerst in:</p>
-				<a class="toAccount" asp-page="/Account">Inloggen</a>
+
+<div class="container mt-4">
+	<div class="row">
+		<div class="col-lg-10 mx-auto">
+			<div class="card shadow-sm">
+				<div class="card-header bg-light">
+					@if(Model.CurrentCustomer == null)
+					{
+						<div class="d-flex justify-content-between align-items-center">
+							<div>
+								<p class="mb-auto fs-4 text-danger fw-bold">Om een order te kunnen plaatsen, moet U eerst inloggen:</p>
+							</div>
+							<div>
+								<a class="btn btn-primary" asp-page="/Account">Inloggen</a>
+							</div>
+						</div>
+					}
+					else
+					{
+						<div class="d-flex justify-content-between align-items-center">
+							<div>
+								<p class="mb-0 fw-bold">Winkelwagen van @Model.CurrentCustomer.Name</p>
+							</div>
+							<div>
+								<a class="btn btn-outline-primary" asp-page="/Account">Verander van account</a>
+							</div>
+						</div>
+					}
+				</div>
+
+				<div class="card-body">
+					<h5 class="card-title mb-3">Huidige winkelwagen:</h5>
+
+					@if(Model.Items.Any())
+					{
+						<div class="table-responsive">
+							<table class="table table-hover">
+								<thead class="table-light">
+									<tr>
+										<th>Naam</th>
+										<th>Aantal</th>
+										<th>Prijs Per Stuk</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									@foreach(var item in Model.Items)
+									{
+										<tr>
+											<td>@item.product.Name</td>
+											<td>@item.quantity</td>
+											<td>€@item.product.Price</td>
+											<td>
+												<form method="post" asp-page-handler="DeleteCartItem" class="d-inline">
+													<input type="hidden" name="id" value="@item.product.Id"/>
+													<button class="btn btn-danger btn-sm" type="submit">
+														<i class="bi bi-trash"></i> Verwijder
+													</button>
+												</form>
+											</td>
+										</tr>
+									}
+								</tbody>
+							</table>
+						</div>
+
+						<div class="d-flex justify-content-end mt-3">
+							<h5 class="me-2">Totaal:</h5>
+							<h5 class="text-danger">€@Model.Total.ToString()</h5>
+						</div>
+					}
+					else
+					{
+						<div class="alert alert-info" role="alert">
+							Uw winkelwagen is leeg.
+						</div>
+					}
+				</div>
+
+				@if(Model.CurrentCustomer != null && Model.Items.Any())
+				{
+					<div class="card-footer bg-light text-end">
+						<form method="post" asp-page-handler="OrderCart" class="d-inline">
+							<button class="btn btn-success btn-lg" type="submit">Order plaatsen</button>
+						</form>
+					</div>
+				}
 			</div>
-		}
-		else
-		{
-			<div class="cartLogIn">
-				<p class="loggedIn">Winkelwagen van @Model.CurrentCustomer.Name</p>
-				<a class="switchAccount" asp-page="/Account">Verander van account</a>
-			</div>
-		}
-	</div>
-	<div class="mainCart">
-		<p class="cartTitle">
-			Huidige winkelwagen:
-		</p>
-		<table class="tableStructure">
-			<tr>
-				<th>Naam</th>
-				<th>Aantal</th>
-				<th>Prijs Per Stuk</th>
-			</tr>
-		@foreach(var item in Model.Items)
-		{
-			<tr>
-				<td>@item.product.Name</td>
-				<td>@item.quantity</td>
-				<td>€@item.product.Price</td>
-				<td>
-					<form method="post" asp-page-handler="DeleteCartItem">
-						<input type="hidden" name="id" value="@item.product.Id"/>
-						<button class="deleteBtn" type="submit">X</button>
-					</form>
-				</td>
-			</tr>
-		}
-		</table>
-		<div class="totalPrice">
-			<p>Total: </p><p class ="totalCart"> €@Model.Total.ToString()</p>
 		</div>
-	</div>
-	<div class="orderCart">
-		@if(Model.CurrentCustomer != null && Model.Items.Any())
-		{
-			<form method="post" asp-page-handler="OrderCart">
-				<button class="orderBtn" type="submit">Order plaatsen</button>
-			</form>
-		}
 	</div>
 </div>
