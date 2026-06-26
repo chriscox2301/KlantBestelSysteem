@@ -4,18 +4,27 @@
     ViewData["Title"] = "Home page";
 }
 <link rel='stylesheet' type='text/css' media='screen' href='~/css/index.css'>
-<div>
-    <h2 class="title">Meest verkochte producten</h2>
-    <div class="bestSellingContainer">
-        @foreach(var p in Model.BestSellingProducts)
+
+<div class="text-center">
+    <img src="~/img/aanbieding.png" class="img-fluid mx-auto d-block"/>
+</div>
+
+<div class="container">
+    <h1>Meest verkochte producten</h1>
+    <div class="row">
+        @foreach (var p in Model.BestSellingProducts)
         {
-            <div class="productContainer">
-                <a asp-page="/Product" asp-route-id="@p.Id" class="productLink"></a>
-                <div><img src="@p.ImageUrl" class="productImg"/></div>
-                <div class="productAnouncement">
-                    <p class="productTitle">@Html.DisplayName(p.Name)</p>
-                    <p class="productPrice">€@p.Price.ToString()</p>
-                </div>
+            <div class="col-md-4">
+                <a asp-page="/Product" asp-route-id="@p.Id" class="product-link">
+                    <div class="card">
+                        <img src="@p.ImageUrl" class="card-img-top img-fluid"
+                             style="height: 200px; object-fit: contain;" />
+                        <div class="card-body">
+                            <h5 class="card-title">@p.Name</h5>
+                            <p class="card-text">€@p.Price.ToString()</p>
+                        </div>
+                    </div>
+                </a>
             </div>
         }
     </div>
