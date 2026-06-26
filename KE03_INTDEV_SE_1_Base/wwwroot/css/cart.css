@@ -1,0 +1,164 @@
+﻿.cartContainer {
+    display: flex;
+    flex-direction: column;
+/*    width: 60vh;*/
+    width: fit-content;
+    height: auto;
+    border-radius: 8px;
+    background-color: white;
+    margin: auto;
+    border: 2px solid black;
+}
+
+.accountCart{
+
+}
+
+.mainCart{
+
+}
+
+.tableStructure{
+    margin-left: 0.35vh;
+}
+
+.orderCart {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-top: 1px solid black;
+    height: 6vh;
+    width: 100%;
+}
+
+.orderBtn {
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.8);
+    color: white;
+    background-color: black;
+    border-radius: 8px;
+    margin-right: 2vh;
+}
+
+.orderBtn:hover{
+    cursor: pointer;
+    border: 2px solid white;
+    transition-duration: 0.5s;
+}
+
+.notLoggedIn {
+    color: red;
+    font-weight: bold;
+    height: 3vh;
+    margin: auto;
+    cursor: pointer;
+    margin-left: 2vh;
+    margin-right: 2vh;
+}
+
+.cartLogIn{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid black;
+    height: 10vh;
+    justify-content: space-between;
+}
+
+.toAccount {
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.8);
+    color: white;
+    background-color: blue;
+    border-radius: 8px;
+    height: 4vh;
+    width: 10vh;
+    margin: auto;
+    margin-right: 4vh;
+    text-decoration: none;
+    text-align: center;
+    align-content: center;
+}
+
+    .toAccount:hover {
+        cursor: pointer;
+        border: 2px solid white;
+        background-color: darkblue;
+        transition-duration: 0.5s;
+        color: white;
+    }
+
+.switchAccount {
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.8);
+    color: white;
+    background-color: blue;
+    border-radius: 8px;
+    height: 6vh;
+    width: 13vh;
+    margin: auto;
+    margin-right: 4vh;
+    text-decoration: none;
+    text-align: center;
+    align-content: center;
+    border: 2px solid black;
+}
+
+.switchAccount:hover {
+    cursor: pointer;
+    border: 2px solid white;
+    background-color: darkblue;
+    transition-duration: 0.5s;
+    color: white;
+}
+
+.loggedIn {
+    color: black;
+    font-weight: bold;
+    height: 3vh;
+    margin: auto;
+    margin-left: 2vh;
+    margin-right: 2vh;
+}
+
+.cartTitle{
+    margin-left: 2vh;
+    margin-top: 2vh;
+    font-weight: bold;
+}
+
+.itemInfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+th {
+    padding: 15px;
+}
+
+td{
+    padding: 15px;
+}
+
+.totalCart{
+    color: red;
+    margin-left: 0.5vh;
+}
+
+.totalPrice {
+    display: flex;
+    flex-direction: row;
+    margin-left: 2vh;
+    font-weight: bold;
+}
+
+.deleteBtn {
+    color: red;
+    font-weight: bold;
+    background: black;
+    border-radius: 8px;
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.8);
+}
+
+.deleteBtn:hover {
+    cursor: pointer;
+    border: 2px solid red;
+    transition-duration: 0.5s;
+}

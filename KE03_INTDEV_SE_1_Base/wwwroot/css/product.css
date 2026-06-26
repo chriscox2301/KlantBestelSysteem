@@ -1,0 +1,101 @@
+﻿.container2{
+    display: flex;
+    flex-direction: row;
+    width: 110vh;
+    height: 50vh; 
+    background-color: white;
+    border-radius: 8px;
+    margin: auto;
+}
+
+img{
+    height: 50vh;
+    width: 50vh;
+    object-fit: contain;
+}
+
+.imgContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(101, 140, 143);
+    height: 50vh;
+    width: 50vh;
+    border-radius: 8px;
+}
+
+.productContainer{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    height: 50vh;
+    width: 50vh;
+    background-color: white;
+}
+
+.infoContainer{
+    width: 50vh;
+    height: 35vh;
+    cursor: default;
+}
+
+.acties{
+    display: flex;
+    flex-direction: row;
+    height: 15vh;
+    width: 55vh;
+}
+
+.orderContainer {
+    display: flex;
+    flex-direction: column;
+    height: 15vh;
+    width: 30vh;
+    margin: 0;
+}
+
+.Input2{
+    margin-top: 5vh;
+    margin-left: 10px;
+    height: 5vh;
+    width: 60px;
+}
+
+.addToCart2 {
+    display: flex;
+    background-color: black;
+    color: white;
+    align-items: center;
+    margin-top: 5vh;
+    margin-left: 1vh;
+    height: 5vh;
+    width: 25vh;
+}
+
+    .addToCart2:hover {
+        box-shadow: 4px 4px 8px rgba(0,0,0,0.8);
+        border: 2px solid red;
+        cursor: pointer;
+    }
+
+.cartIcon{
+    width: 3vh;
+    height: auto;
+}
+
+.price{
+    color: red;
+    font-weight: bolder;
+    font-size: 2.5vh;
+    width: 25vh;
+    margin-left: 1vh;
+    margin-top: 5.5vh;
+    cursor: default;
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    width: 34vh;
+    background-color: white;
+}

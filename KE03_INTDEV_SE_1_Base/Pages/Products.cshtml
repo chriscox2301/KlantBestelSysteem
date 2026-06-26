@@ -1,0 +1,41 @@
+﻿@page
+@model KE03_INTDEV_SE_1_Base.Pages.ProductsModel
+@{
+	ViewData["Title"] = "Producten";
+}
+<link rel='stylesheet' type='text/css' media='screen' href='~/css/products.css'>
+
+<div class="productCatalog">
+    @if(!Model.Products.Any())
+    {
+        <div class = "badSearch">
+            <img class="badSearchImg" src="~/img/Icons/BadSearch.png" />
+            <h1>Uw zoekresultaat leverde geen resultaten op</h1>
+        </div>
+    }
+    @foreach (var product in Model.Products)
+    {
+        <div class="productContainer">
+            <a asp-page="/Product" asp-route-id="@product.Id" class="productLink"></a>
+            <div>
+                <img class="productImg" src="@product.ImageUrl" />
+            </div>
+            <div class="productAnouncement">
+                <div class="productTxt">
+                    <div class="productTitle">@product.Name</div>
+                    <div class="productDescr">@product.Description</div>
+                </div>
+
+                <div class="productOrder">
+                    <div class="productPrice">
+                        <p>€@product.Price.ToString()</p>
+                    </div>
+                    <form method="post" asp-page-handler="AddToCart">
+                        <input type="hidden" name="id" value="@product.Id" />
+                        <button class="addToCart">+ <img src="~/img/Icons/CartIcon.png" /></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,54 @@
+﻿.title{
+    cursor: default;
+}
+
+.bestSellingContainer{
+    display: flex;
+    flex-direction: row;
+   justify-content: space-between
+}
+
+.productContainer{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    height: 30%;
+    width: 30%;
+    position: relative;
+    z-index: 0;
+}
+
+.productLink{
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.productContainer:hover{
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.8);
+    border: 2px solid rgb(40, 177, 243);
+    cursor: pointer;
+}
+
+.productImg {
+    height: 25vh;
+    width: 100%;
+    border-bottom: 2px solid black;
+}
+
+.productAnouncement{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 4px;
+    background-color: white;
+}
+
+.productTitle{
+    font-weight: bolder;
+}
+
+.productPrice{
+    color: red;
+    font-weight: bold;
+}

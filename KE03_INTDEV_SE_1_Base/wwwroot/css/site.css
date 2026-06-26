@@ -1,0 +1,96 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  background-color: #E1E7EF;
+}
+
+.NavImg{
+    width: 80px;
+    height: auto;
+}
+
+.NavImg2{
+    width: 30px;
+    height: auto;
+}
+
+.navbar{
+    background-color: #0F1729 !important;
+}
+
+.navbar-light .navbar-brand,
+.navbar-light .nav-link{
+    color: #FFFFFF !important;
+}
+
+.navbar-light .nav-link:hover,
+.navbar-light .nav-link:focus{
+        color: #E1E7EF !important;
+}
+
+.navbar-collapse {
+    display: flex;
+    align-items: center;
+}
+
+.search-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .search-container form {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .search-container input {
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+
+    .search-container button {
+        cursor: pointer;
+        padding: 4px;
+    }
+
+        .search-container button img {
+            width: 25px;
+            height: auto;
+        }
+
+.navbar-nav:first-child {
+    margin-right: auto;
+}
+
+.navbar-nav.ms-auto {
+    margin-left: auto !important;
+}
+
+.Input{
+    width: 300px;
+}

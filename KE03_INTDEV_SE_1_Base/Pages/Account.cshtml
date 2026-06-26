@@ -1,0 +1,28 @@
+﻿@page
+@model KE03_INTDEV_SE_1_Base.Pages.AccountModel
+@{
+	ViewData["Title"] = "Account details";
+}
+<link rel='stylesheet' type='text/css' media='screen' href='~/css/Account.css' asp-append-version="true">
+<div class="pageContainer">
+	<div class="accountContainer">
+		@foreach (var c in Model.Customers)
+		{
+			<div class="perAccountContainer">
+				<h1 class="name">@c.Name</h1>
+				@if (Model.CurrentCustomer == null || Model.CurrentCustomer.Id != c.Id)
+				{
+					<form method="post" asp-page-handler="LogIn">
+						<input type="hidden" name="id" value="@c.Id" />
+						<input type="hidden" name="name" value="@c.Name" />
+						<button type="submit" class="logInBtn">Log In</button>
+					</form>
+				}
+				else
+				{
+					<p class="LoggedIn">Ingelogd</p>
+				}
+			</div>	
+		}
+	</div>
+</div>

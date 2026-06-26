@@ -1,0 +1,111 @@
+﻿.pageContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.accountContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 8px;
+    margin: auto;
+    width: 50vh;
+    height: fit-content;
+}
+
+.perAccountContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+
+.name {
+    margin-left: 1vh;
+    cursor: default;
+}
+
+.logInBtn {
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.8);
+    color: white;
+    background-color: blue;
+    border-radius: 8px;
+    height: 4vh;
+    width: 10vh;
+    margin-right: 2vh;
+}
+
+    .logInBtn:hover {
+        cursor: pointer;
+        border: 2px solid white;
+        background-color: darkblue;
+        transition-duration: 0.5s;
+    }
+.LoggedIn {
+    margin-right: 3.5vh;
+    margin-top: 1vh;
+    color: darkgreen;
+    font-weight: bolder;
+    cursor: default;
+}
+
+.pageContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.orderHistoryContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: white;
+    width: 70vh;
+    height: auto;
+    margin: auto;
+    cursor: default;
+}
+
+.wrong{
+    color: red;
+    font-weight: bold;
+    margin: auto;
+}
+
+.orderContainer{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2vh;
+    border-bottom: 1px solid black;
+}
+
+.tableTitle {
+    background-color: #0F1729;
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+    color: white;
+}
+
+.tableContent {
+    background-color: #65758B;
+    padding: 10px 12px;
+    border-bottom: 1px solid black;
+    color: antiquewhite;
+}
+
+.tableDate {
+    font-weight: bold;
+    color: black;
+}
+
+.historyTitle{
+    border-bottom: 1px solid black;
+}

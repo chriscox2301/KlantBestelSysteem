@@ -1,0 +1,61 @@
+﻿@page
+@model KE03_INTDEV_SE_1_Base.Pages.CartModel
+@{
+	ViewData["Title"] = "Winkelwagen";
+}
+<link rel='stylesheet' type='text/css' media='screen' href='~/css/cart.css'>
+<div class="cartContainer">
+	<div class="accountCart">
+		@if(Model.CurrentCustomer == null)
+		{
+			<div class="cartLogIn">
+				<p class="notLoggedIn">Om een order te plaatsen, log eerst in:</p>
+				<a class="toAccount" asp-page="/Account">Inloggen</a>
+			</div>
+		}
+		else
+		{
+			<div class="cartLogIn">
+				<p class="loggedIn">Winkelwagen van @Model.CurrentCustomer.Name</p>
+				<a class="switchAccount" asp-page="/Account">Verander van account</a>
+			</div>
+		}
+	</div>
+	<div class="mainCart">
+		<p class="cartTitle">
+			Huidige winkelwagen:
+		</p>
+		<table class="tableStructure">
+			<tr>
+				<th>Naam</th>
+				<th>Aantal</th>
+				<th>Prijs Per Stuk</th>
+			</tr>
+		@foreach(var item in Model.Items)
+		{
+			<tr>
+				<td>@item.product.Name</td>
+				<td>@item.quantity</td>
+				<td>€@item.product.Price</td>
+				<td>
+					<form method="post" asp-page-handler="DeleteCartItem">
+						<input type="hidden" name="id" value="@item.product.Id"/>
+						<button class="deleteBtn" type="submit">X</button>
+					</form>
+				</td>
+			</tr>
+		}
+		</table>
+		<div class="totalPrice">
+			<p>Total: </p><p class ="totalCart"> €@Model.Total.ToString()</p>
+		</div>
+	</div>
+	<div class="orderCart">
+		@if(Model.CurrentCustomer != null && Model.Items.Any())
+		{
+			<form method="post" asp-page-handler="OrderCart">
+				<button class="orderBtn" type="submit">Order plaatsen</button>
+			</form>
+		}
+	</div>
+</div>

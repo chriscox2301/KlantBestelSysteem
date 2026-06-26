@@ -1,0 +1,119 @@
+﻿.productCatalog {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.productContainer {
+    display: flex;
+    flex-direction: row;
+    border-radius: 8px;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    height: 20%;
+    width: 70%;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+}
+
+.productLink {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.productContainer:hover:not(:has(.addToCart:hover)) {
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.8);
+    border: 2px solid rgb(40, 177, 243);
+    cursor: pointer;
+}
+
+.productContainer:hover {
+    color: inherit;
+}
+
+.productImgContainer {
+    display: flex;
+    border-radius: 8px;
+}
+
+.productImg {
+    height: 100%;
+    width: 25vh;
+    border-radius: 8px;
+}
+
+.productAnouncement{
+    display: flex;
+    width: 65vh;
+    margin-left: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.productTxt{
+    width: 80%;
+}
+
+.productTitle{
+    font-weight: bold;
+}
+
+.productDescr{
+    margin-top: 5px;
+}
+
+.productOrder{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 15vh;
+}
+
+.productPrice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    margin-left: auto;
+    color: red;
+    font-weight: bolder;
+}
+
+.addToCart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    margin-bottom: 15px;
+    margin-left: auto;
+    width: 80% ;
+    position: relative;
+    z-index: 2;
+}
+
+.addToCart:hover {
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.8);
+    border: 2px solid red;
+    cursor: pointer;
+}
+
+.badSearchImg{
+    height: 30vh;
+    width: auto;
+}
+
+.badSearch {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    height: 100vh;
+    width: auto;
+    color: red;
+}

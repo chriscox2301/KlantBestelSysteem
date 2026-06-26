@@ -1,0 +1,35 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<link rel='stylesheet' type='text/css' media='screen' href='~/css/index.css'>
+<div>
+    <h2 class="title">Meest verkochte producten</h2>
+    <div class="bestSellingContainer">
+        @foreach(var p in Model.BestSellingProducts)
+        {
+            <div class="productContainer">
+                <a asp-page="/Product" asp-route-id="@p.Id" class="productLink"></a>
+                <div><img src="@p.ImageUrl" class="productImg"/></div>
+                <div class="productAnouncement">
+                    <p class="productTitle">@Html.DisplayName(p.Name)</p>
+                    <p class="productPrice">€@p.Price.ToString()</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@* TODO (9)
+    - Notification when something is succesfully added to cart -> Feedback
+    - Notification when an order is added seccesfully -> Feedback -> Pagina?
+    - When ordering from a searched Item make sure it keeps the search filter on 
+      And that it doesnt go to the (allproducts screen) -> Annoying
+    - Update Functionaliteit in de winkelwagen
+    - Upgrade account en winkelwagen css een beetje
+    - Maak de (log eerst in om te kunnen bestellen) beter
+    - Verder shoppen knop maken op winkelwagen
+    - Vind een goede oplossing voor account/bestelgeschiedenis -> kan beter maar voor nu goed
+    - implementeer een API
+*@
