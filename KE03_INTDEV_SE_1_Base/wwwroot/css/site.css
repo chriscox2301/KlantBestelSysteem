@@ -30,17 +30,6 @@ body {
 .NavImg2{
     width: 30px;
     height: auto;
-    color: black;
-}
-
-.navbar-light .navbar-brand,
-.navbar-light .nav-link{
-    color: #FFFFFF !important;
-}
-
-.navbar-light .nav-link:hover,
-.navbar-light .nav-link:focus{
-        color: #E1E7EF !important;
 }
 
 .navbar-collapse {
