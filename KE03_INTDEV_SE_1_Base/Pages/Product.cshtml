@@ -6,20 +6,20 @@
 
 <div class="row bg-light shadow-sm rounded-3 overflow-hidden">
 	<div class="col-md-6 d-flex p-2">
-		<img src="@Model.product.ImageUrl" class="img-fluid" />
+		<img src="@Model.product.ImageUrl" class="productD-img" style="max-height: 350px; object-fit: contain;" />
 	</div>
 	<div class="col-md-6 p-4 d-flex flex-column">
 		<h2>@Model.product.Name</h2>
 		<small class="text-muted">Productnummer: @Model.product.Id</small>
 		<p class="text-secondary">@Model.product.Description</p>
 
-		<div class="mt-auto d-flex justify-content-between align-items-center">
+		<div class="mt-auto d-flex flex-wrap justify-content-between align-items-center gap-3">
 			<div class="fs-2 fw-bold text-black">
 				€@Model.product.Price.ToString("F2")
 			</div>
-			<form method="post" asp-page-handler="AddToCart" class="d-flex align-items-center gap-2">
+			<form method="post" asp-page-handler="AddToCart" class="d-flex align-items-center gap-2 flex-wrap">
 				<input type="hidden" name="id" value="@Model.product.Id" />
-				<input type="number" name="quantity" value="1" min="1" max="50" class="form-control" style="width: 70px;" />
+				<input type="number" name="quantity" value="1" min="1" max="50" class="form-control" style="width: 80px;" />
 				<button type="submit" class="btn btn-success">
 					Voeg toe aan winkelwagen
 				</button>
