@@ -8,35 +8,10 @@
 	<div class="row">
 		<div class="col-lg-10 mx-auto">
 			<div class="card shadow-sm">
-				<div class="card-header bg-light">
-					@if(Model.CurrentCustomer == null)
-					{
-						<div class="d-flex justify-content-between align-items-center">
-							<div>
-								<p class="mb-auto fs-4 text-danger fw-bold">Om een order te kunnen plaatsen, moet U eerst inloggen:</p>
-							</div>
-							<div>
-								<a class="btn btn-primary" asp-page="/Account">Inloggen</a>
-							</div>
-						</div>
-					}
-					else
-					{
-						<div class="d-flex justify-content-between align-items-center">
-							<div>
-								<p class="mb-0 fw-bold">Winkelwagen van @Model.CurrentCustomer.Name</p>
-							</div>
-							<div>
-								<a class="btn btn-outline-primary" asp-page="/Account">Verander van account</a>
-							</div>
-						</div>
-					}
-				</div>
-
 				<div class="card-body">
 					<h5 class="card-title mb-3">Huidige winkelwagen:</h5>
 
-					@if(Model.Items.Any())
+					@if (Model.Items.Any())
 					{
 						<div class="table-responsive">
 							<table class="table table-hover">
@@ -49,7 +24,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									@foreach(var item in Model.Items)
+									@foreach (var item in Model.Items)
 									{
 										<tr>
 											<td>@item.product.Name</td>
@@ -57,7 +32,7 @@
 											<td>€@item.product.Price</td>
 											<td>
 												<form method="post" asp-page-handler="DeleteCartItem" class="d-inline">
-													<input type="hidden" name="id" value="@item.product.Id"/>
+													<input type="hidden" name="id" value="@item.product.Id" />
 													<button class="btn btn-danger btn-sm" type="submit">
 														<i class="bi bi-trash"></i> Verwijder
 													</button>
@@ -71,7 +46,79 @@
 
 						<div class="d-flex justify-content-end mt-3">
 							<h5 class="me-2">Totaal:</h5>
-							<h5 class="text-danger">€@Model.Total.ToString()</h5>
+							<h5 class="text-primary fw-bold">€@Model.Total.ToString()</h5>
+						</div>
+
+						<h5><i class="bi bi-gift"></i> Kortingscode</h5>
+						<div class="d-flex mb-4">
+							<input type="text" name="discountCode" class="form-control" placeholder="Code" style="width: 120px;" />
+							<button class="btn btn-primary" type="submit"> +</button>
+						</div>
+						
+						<h5><i class="bi bi-credit-card"></i> Betaalmethode</h5>
+						<div class="d-flex flex-column gap-2 mb-4">
+							<label class="border rounded-3 p-3 d-flex align-items-center gap-3" style="cursor: pointer;">
+								<input type="radio" name="paymentMethod" value="ideal" checked />
+								<i class="bi bi-bank2 fs-5"></i>
+								<span>iDEAL</span>
+							</label>
+							<label class="border rounded-3 p-3 d-flex align-items-center gap-3" style="cursor: pointer;">
+								<input type="radio" name="paymentMethod" value="creditcard" />
+								<i class="bi bi-credit-card fs-5"></i>
+								<span>Creditcard</span>
+							</label>
+							<label class="border rounded-3 p-3 d-flex align-items-center gap-3" style="cursor: pointer;">
+								<input type="radio" name="paymentMethod" value="paypal" />
+								<i class="bi bi-paypal fs-5"></i>
+								<span>PayPal</span>
+							</label>
+							<label class="border rounded-3 p-3 d-flex align-items-center gap-3" style="cursor: pointer;">
+								<input type="radio" name="paymentMethod" value="afterpay" />
+								<i class="bi bi-calendar-check fs-5"></i>
+								<span>Achteraf betalen</span>
+							</label>
+						</div>
+
+						<h5><i class="bi bi-truck"></i> Bezorgadres</h5>
+						<div class="d-flex flex-column gap-2 mb-4">
+							<div class="d-flex gap-2">
+								<input type="text" name="firstName" class="form-control" placeholder="Voornaam" />
+								<input type="text" name="lastName" class="form-control" placeholder="Achternaam" />
+							</div>
+							<input type="text" name="street" class="form-control" placeholder="Straatnaam" />
+							<div class="d-flex gap-2">
+								<input type="text" name="houseNumber" class="form-control" placeholder="Huisnummer" style="width: 120px;" />
+								<input type="text" name="postalCode" class="form-control" placeholder="Postcode" style="width: 120px;" />
+								<input type="text" name="city" class="form-control" placeholder="Stad" />
+							</div>
+						</div>
+
+						<h5><i class="bi bi-calendar"></i> Bezorgmoment</h5>
+						<div class="d-flex flex-column gap-2">
+							<label class="border rounded-3 p-3 d-flex align-items-center gap-3" style="cursor: pointer;">
+								<input type="radio" name="deliveryMoment" value="standard" checked />
+								<i class="bi bi-box-seam fs-5"></i>
+								<div>
+									<span class="fw-semibold">Standaard bezorging</span>
+									<small class="text-muted d-block">2-3 werkdagen</small>
+								</div>
+							</label>
+							<label class="border rounded-3 p-3 d-flex align-items-center gap-3" style="cursor: pointer;">
+								<input type="radio" name="deliveryMoment" value="express" />
+								<i class="bi bi-lightning-charge fs-5"></i>
+								<div>
+									<span class="fw-semibold">Expressbezorging</span>
+									<small class="text-muted d-block">Morgen in huis</small>
+								</div>
+							</label>
+							<label class="border rounded-3 p-3 d-flex align-items-center gap-3" style="cursor: pointer;">
+								<input type="radio" name="deliveryMoment" value="evening" />
+								<i class="bi bi-moon fs-5"></i>
+								<div>
+									<span class="fw-semibold">Avondbezorging</span>
+									<small class="text-muted d-block">Tussen 18:00 en 22:00</small>
+								</div>
+							</label>
 						</div>
 					}
 					else
@@ -81,16 +128,38 @@
 						</div>
 					}
 				</div>
-
-				@if(Model.CurrentCustomer != null && Model.Items.Any())
+				@if (Model.CurrentCustomer == null)
 				{
-					<div class="card-footer bg-light text-end">
-						<form method="post" asp-page-handler="OrderCart" class="d-inline">
-							<button class="btn btn-success btn-lg" type="submit">Order plaatsen</button>
-						</form>
+					@* <div class="d-flex justify-content-between align-items-center">
+						<div>
+							<p class="mb-auto fs-4 text-danger fw-bold">Om een order te kunnen plaatsen, moet U eerst inloggen:</p>
+						</div>
+						<div>
+							<a class="btn btn-primary" asp-page="/Account">Inloggen</a>
+						</div>
+					</div> *@
+					
+					<div class="card-footer d-flex justify-content-between align-items-center">
+						<p class="mb-0 fs-5 text-danger fw-bold">Om een order te plaatsen, moet u eerst inloggen:</p>
+						<a class="btn btn-primary" asp-page="/Account">Inloggen</a>
+					</div>
+				}
+				else
+				{
+					<div class="card-footer d-flex justify-content-between align-items-center">
+						<p class="mb-0 fs-5 fw-bold">Winkelwagen van @Model.CurrentCustomer.Name</p>
+						<a class="btn btn-outline-primary" asp-page="/Account">Verander van account</a>
 					</div>
 				}
 			</div>
+			@if (Model.CurrentCustomer != null && Model.Items.Any())
+			{
+				<div class="card-footer bg-light text-end">
+					<form method="post" asp-page-handler="OrderCart" class="d-inline">
+						<button class="btn btn-success btn-lg" type="submit">Order plaatsen</button>
+					</form>
+				</div>
+			}
 		</div>
 	</div>
 </div>

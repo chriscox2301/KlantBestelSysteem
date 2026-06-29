@@ -59,6 +59,7 @@
 																<th class="text-center">Aantal</th>
 																<th class="text-end">Prijs Per Stuk</th>
 																<th class="text-end">Totaal</th>
+																<th class="text-end">Status</th>
 															</tr>
 														</thead>
 														<tbody>
@@ -69,6 +70,7 @@
 																	<td class="text-center">@product.quantity</td>
 																	<td class="text-end">€@product.product.Price.ToString("F2")</td>
 																	<td class="text-end fw-bold">€@((product.product.Price * product.quantity).ToString("F2"))</td>
+																	<td class="text-end alert-success">Bezorgd</td>
 																</tr>
 															}
 														</tbody>
@@ -78,6 +80,7 @@
 																<td class="text-end fw-bold text-primary">
 																	€@order.Producten.Sum(p => p.product.Price * p.quantity).ToString("F2")
 																</td>
+																<td></td>
 															</tr>
 														</tfoot>
 													</table>

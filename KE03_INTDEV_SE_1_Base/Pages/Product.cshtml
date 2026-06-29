@@ -4,14 +4,17 @@
 	ViewData["Title"] = "ProductDetails";
 }
 <div class="container py-4">
-	<div class="row bg-light shadow-sm rounded-3 overflow-hidden">
+	<div class="row bg-light shadow-lg rounded-3 overflow-hidden">
 		<div class="col-md-6 d-flex p-2">
 			<img src="@Model.product.ImageUrl" class="img-fluid" style="max-height: 350px; object-fit: contain;" />
 		</div>
 		<div class="col-md-6 p-4 d-flex flex-column">
 			<h2>@Model.product.Name</h2>
+			<i class="bi bi-star-fill"><i class="bi bi-star-fill"><i class="bi bi-star-fill"><i class="bi bi-star-fill"><i class="bi bi-star-half"></i></i></i></i></i>
 			<small class="text-muted">Productnummer: @Model.product.Id</small>
-			<p class="text-secondary">@Model.product.Description</p>
+			<p class="text-secondary">
+				@Model.product.Description
+			</p>
 
 			<div class="mt-auto d-flex flex-wrap justify-content-between align-items-center gap-3">
 				<div class="fs-2 fw-bold text-black">
@@ -20,11 +23,47 @@
 				<form method="post" asp-page-handler="AddToCart" class="d-flex align-items-center gap-2 flex-wrap">
 					<input type="hidden" name="id" value="@Model.product.Id" />
 					<input type="number" name="quantity" value="1" min="1" max="50" class="form-control" style="width: 80px;" />
-					<button type="submit" class="btn btn-success">
-						Voeg toe aan winkelwagen
+					<button type="submit" class="btn btn-primary">
+						In winkelwagen
 					</button>
 				</form>
+			</div>
+			<div class="mt-3 d-flex flex-column gap-1">
+				<i class="bi bi-check2"> Bestellen en betalen via Matrix Inc.</i>
+				<i class="bi bi-check2"> Inclusief verzendkosten</i>
+				<i class="bi bi-check2"> 30 dagen bedenktijd en gratis retourneren</i>
+				<i class="bi bi-check2"> Wettelijke garantie via Matrix Inc.</i>
 			</div>
 		</div>
 	</div>
 </div>
+
+<div class="container py-4">
+	<div class="row mb-4">
+		<div class="col-12">
+			<h2 class="fw-bold mb-1">Bekijk ook eens</h2>
+		</div>
+	</div>
+	<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+		@foreach (var p in Model.OtherProducts)
+		{
+			<div class="col">
+				<a asp-page="/Product" asp-route-id="@p.Id" class="text-decoration-none">
+					<div class="card h-100 shadow-sm product-card">
+						<img src="@p.ImageUrl" class="card-img-top" alt="@p.Name" style="height: 200px; object-fit:
+						+ cover;" />
+						<div class="card-body d-flex flex-column">
+							<h5 class="card-title text-dark">@p.Name</h5>
+							<div class="mt-auto">
+								<p class="h5 text-black fw-bold mb-2">€@p.Price.ToString("F2")</p>
+								<span class="btn btn-primary btn-sm w-100">Bekijk product</span>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		}
+	</div>
+</div>
+
+

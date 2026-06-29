@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using KE03_INTDEV_SE_1_Base.Helpers
+@{
+    var cart = Context.Session.GetObject<DataAccessLayer.Models.Cart>("Cart");
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -34,9 +39,13 @@
 
                 <ul class="navbar-nav col justify-content-end">
                     <li class="nav-item">
-                        <a class="nav-link" asp-page="/Cart">
-                            <i class="bi bi-cart3"></i></a>
-                        </a>
+                        <a class="nav-link position-relative" asp-page="/Cart">
+                            <i class="bi bi-cart3"></i>
+                            @if (cart?.Items?.Any() == true)
+                                    {
+                                        <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger rounded-circle"></span>
+                                    }
+                                </a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" data-bs-toggle="dropdown">
@@ -56,11 +65,11 @@
         @RenderBody()
     </main>
 
-    <footer class="mt-5 py-3 bg-light border-top">
+    @* <footer class="mt-5 py-3 bg-light border-top">
         <div class="container text-center text-muted">
             <span>&copy; @DateTime.Now.Year - Matrix Inc</span>
         </div>
-    </footer>
+    </footer> *@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
