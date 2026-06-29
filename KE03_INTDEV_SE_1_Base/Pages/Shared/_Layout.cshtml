@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/KE03_INTDEV_SE_1_Base.styles.css" asp-append-version="true" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-black">
@@ -18,28 +19,28 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
+                <ul class="navbar-nav col">
                     <li class="nav-item">
                         <a class="nav-link" asp-page="/Products" asp-route-search="">Producten</a>
                     </li>
                 </ul>
 
-                <form asp-page="/Products" method="get" class="d-flex me-3">
-                    <input type="text" name="search" class="form-control me-2" placeholder="Zoeken...">
+                <form asp-page="/Products" method="get" class="input-group col justify-content-center">
+                    <input type="text" name="search" class="form-control form-control-sm w-auto" placeholder="Zoeken...">
                     <button class="btn btn-light" type="submit">
-                        <img src="~/img/Icons/SearchIcon.png" alt="Zoeken" height="20">
+                        <i class="bi bi-search"></i>
                     </button>
                 </form>
 
-                <ul class="navbar-nav">
+                <ul class="navbar-nav col justify-content-end">
                     <li class="nav-item">
                         <a class="nav-link" asp-page="/Cart">
-                            <img src="~/img/Icons/CartIcon.png" alt="Winkelwagen" height="28">
+                            <i class="bi bi-cart3"></i></a>
                         </a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" data-bs-toggle="dropdown">
-                            <img src="~/img/Icons/AccountIcon.png" alt="Account" height="28">
+                            <i class="bi bi-person"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" asp-page="/Account">Accounts</a></li>
