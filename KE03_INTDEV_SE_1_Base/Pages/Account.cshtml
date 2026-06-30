@@ -1,28 +1,56 @@
 ﻿@page
 @model KE03_INTDEV_SE_1_Base.Pages.AccountModel
 @{
-	ViewData["Title"] = "Account details";
+	ViewData["Title"] = "Accounts";
 }
-<link rel='stylesheet' type='text/css' media='screen' href='~/css/Account.css' asp-append-version="true">
-<div class="pageContainer">
-	<div class="accountContainer">
-		@foreach (var c in Model.Customers)
-		{
-			<div class="perAccountContainer">
-				<h1 class="name">@c.Name</h1>
-				@if (Model.CurrentCustomer == null || Model.CurrentCustomer.Id != c.Id)
-				{
-					<form method="post" asp-page-handler="LogIn">
-						<input type="hidden" name="id" value="@c.Id" />
-						<input type="hidden" name="name" value="@c.Name" />
-						<button type="submit" class="logInBtn">Log In</button>
-					</form>
-				}
-				else
-				{
-					<p class="LoggedIn">Ingelogd</p>
-				}
-			</div>	
-		}
+
+<div class="container py-4">
+	<div class="row justify-content-center">
+		<div class="col-lg-6 col-md-8">
+			<div class="card shadow-sm">
+				<div class="card-header bg-light text-black">
+					<h4 class="mb-0">
+						<i class="bi bi-people"></i> Selecteer een account
+					</h4>
+				</div>
+				<div class="card-body p-0">
+					<div class="list-group list-group-flush">
+						@foreach (var c in Model.Customers)
+						{
+							<div class="list-group-item d-flex justify-content-between align-items-center py-3">
+								<div>
+									<h5 class="mb-0">@c.Name</h5>
+								</div>
+								<div>
+									@if (Model.CurrentCustomer == null || Model.CurrentCustomer.Id != c.Id)
+									{
+										<form method="post" asp-page-handler="LogIn" class="d-inline">
+											<input type="hidden" name="id" value="@c.Id" />
+											<input type="hidden" name="name" value="@c.Name" />
+											<button type="submit" class="btn btn-primary">
+												Inloggen
+											</button>
+										</form>
+									}
+									else
+									{
+										<span class="badge rounded rounded-bottom pt-2 pb-2 fw-normal fs-6 bg-success">
+											Ingelogd
+										</span>
+									}
+								</div>
+							</div>	
+						}
+					</div>
+				</div>
+			</div>
+
+			@if (Model.CurrentCustomer != null)
+			{
+				<div class="alert alert-info mt-3" role="alert">
+					<i class="bi bi-info-circle"></i> Je bent ingelogd als <strong>@Model.CurrentCustomer.Name</strong>
+				</div>
+			}
+		</div>
 	</div>
 </div>

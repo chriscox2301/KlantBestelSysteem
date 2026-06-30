@@ -10,6 +10,7 @@ namespace KE03_INTDEV_SE_1_Base.Pages
     {
         private readonly IProductRepository _productRepository;
         public Product? product { get; set; }
+        public IEnumerable<Product> OtherProducts { get; set; } = [];
 
         public ProductModel(IProductRepository productRepository)
         {
@@ -19,6 +20,7 @@ namespace KE03_INTDEV_SE_1_Base.Pages
         public void OnGet(int id)
         {
             product = _productRepository.GetProductById(id);
+            OtherProducts = _productRepository.GetAllProducts().Where(p => p.Id != id).Take(6);
         }
         public IActionResult OnPostAddToCart(int id, int quantity)
         {

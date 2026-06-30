@@ -18,74 +18,39 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
-  background-color: #E1E7EF;
+  background-color: #f8f9fa;
 }
 
-.NavImg{
-    width: 80px;
-    height: auto;
+/* Navbar styling */
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.9);
+    transition: color 0.2s ease;
 }
 
-.NavImg2{
-    width: 30px;
-    height: auto;
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: rgba(255, 255, 255, 1);
 }
 
-.navbar-collapse {
-    display: flex;
-    align-items: center;
+/* Dropdown styling */
+.dropdown-menu {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
-.search-container {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Footer styling */
+.footer {
+    font-size: 0.9rem;
 }
 
-.search-container form {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.search-container input {
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-}
-
-.search-container button {
-    cursor: pointer;
-    padding: 4px;
-}
-
-.search-container button img {
-    width: 25px;
-    height: auto;
-}
-
-.navbar-nav:first-child {
-    margin-right: auto;
-}
-
-.navbar-nav.ms-auto {
-    margin-left: auto !important;
-}
-
-.Input{
-    width: 300px;
-    color: black;
-}
-
+/* Product link styling */
 .product-link {
+    color: #212529;
     text-decoration: none;
-    color: black;
     display: block;
+    transition: color 0.2s ease;
+}
+
+.product-link:hover {
+    color: #0d6efd;
 }
 
 .product-card {

@@ -36,7 +36,7 @@ namespace KE03_INTDEV_SE_1_Base.Pages
         {
             SimpleCustomer customer = new SimpleCustomer(id, name);
             HttpContext.Session.SetObject("Customer", customer);
-            return RedirectToPage("/Account");
+            return RedirectToPage("/Cart");
         }
     }
     
