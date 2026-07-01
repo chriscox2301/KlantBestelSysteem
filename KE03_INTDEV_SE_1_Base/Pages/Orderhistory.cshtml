@@ -31,6 +31,8 @@
 									var orderId = $"order{i}";
 									var headingId = $"heading{i}";
 									var collapseId = $"collapse{i}";
+									var statussen = new[] { "Bezorgd", "Onderweg", "Verwerkt", "Geannuleerd" };
+									var status = statussen[i % statussen.Length];
 
 									<div class="accordion-item">
 										<h2 class="accordion-header" id="@headingId">
@@ -70,7 +72,7 @@
 																	<td class="text-center">@product.quantity</td>
 																	<td class="text-end">€@product.product.Price.ToString("F2")</td>
 																	<td class="text-end fw-bold">€@((product.product.Price * product.quantity).ToString("F2"))</td>
-																	<td class="text-end alert-success">Bezorgd</td>
+																	<td class="text-end">@status</td>
 																</tr>
 															}
 														</tbody>
