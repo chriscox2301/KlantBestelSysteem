@@ -73,7 +73,7 @@ namespace KE03_INTDEV_SE_1_Base.Pages
             }
             _orderRepository.AddOrder(order);
             HttpContext.Session.SetObject("Cart", new Cart());
-            return RedirectToPage("/cart");
+            return RedirectToPage("/Confirmation", new { orderId = order.Id });
         }
 
         public IActionResult OnPostDeleteCartItem(int id)
